@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // mở modal 
+  // Mở modal 
   $("button.btn_edit").click(function (event) {
     $('div#myModalEdit').modal('show');
     const id = $(this).attr("data-id");
@@ -7,6 +7,7 @@ $(document).ready(function () {
       type: "GET",
       url: "http://localhost:3000/Storey/find-val-update/" + id,
       success: function (response) {
+        $('#btnSave').attr("data-id", response._id)
         $('#tensanpham').val(response.name)
         $('#mota').val(response.describe)
         $('#soluong').val(response.soluong)
@@ -18,23 +19,30 @@ $(document).ready(function () {
   //Click Update
   $("#btnSave").click(function () {
     const id = $(this).attr('data-id');
-
-    if (confirm("Bạn có chắc chắn muốn luu sản phẩm này - " + id) == true) {
+    var data = {
+      name: $("#tensanpham").val(),
+      describe: $("#mota").val(),
+      price: $("#gia").val(),
+      soluong: $("#soluong").val(),
+    }
+    if (confirm("Bạn có chắc chắn muốn cập nhật sản phẩm này - " + id) == true) {
       $.ajax({
         type: 'PUT',
         url: 'http://localhost:3000/Storey/update/' + id,
+        dataType: 'json',
+        data: data,
         success: function (response) {
-          alert("update thành công ")
+          $("div#myModalEdit").modal("hide");
+          alert("Cập nhật thành công");
+          location.reload();
         },
         error: function (err) {
           console.log(err);
         }
       });
     } else {
-      console.log("404")
+      console.log("404");
     }
-    alert("Bạn đã cập nhật thành công");
-    $("div#myModalEdit").modal("hide");
   });
 
   //click find

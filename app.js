@@ -17,7 +17,8 @@ app.use('/public',express.static('public'));
 
 //body-parser
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); 
 
 //views engine
 app.set('view engine', 'ejs');

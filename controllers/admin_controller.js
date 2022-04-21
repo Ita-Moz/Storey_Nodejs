@@ -117,9 +117,19 @@ exports.deleted = async (req, res) => {
 }
 
 // Hàm xử lí chỉnh sửa sản phẩm
-exports.update = (req, res) => {
-    products.findByIdAndUpdate(req.params.id, (data) => {
-        console.log(data)
+exports.update =(req, res) => {
+    products.findOneAndUpdate({ _id: req.params.id },{$set:{
+        name: req.body.name,
+        price: req.body.price,
+        describe: req.body.describe,
+        soluong: req.body.soluong,
+    }} , (err, docs) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.status(200).send();
+            console.log("Updated User : ", docs);
+        }
     })
 
 }
