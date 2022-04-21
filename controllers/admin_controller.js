@@ -23,6 +23,18 @@ var upload = multer({
     }
 }).single("txtFile");
 
+var upload1 = multer({
+    storage: storage,
+    limits: {
+        fieldNameSize: 300,
+        fileSize: 10 * 1024 * 1024, // 10 Mb
+    },
+    fileFilter: function (req, file, cb) {
+        console.log(file);
+        cb(null, true)
+    }
+}).single("image-product");
+
 //Hiển thị tất cả các sản phẩm
 exports.show = async (req, res) => {
     try {
@@ -80,7 +92,11 @@ exports.add = (req, res) => {
 exports.search = async (req, res) => {
     try {
         let allSearch = await products.find({ name: req.params.name });
-        return res.status(200).render('search_admin', { array: allSearch });
+        if (allSearch.length == 0) {
+            res.send("Sản phẩm không tồn tại!!!");
+        } else {
+            return res.status(200).render('search_admin', { array: allSearch });
+        }
     }
     catch (err) {
         return err;
@@ -117,20 +133,32 @@ exports.deleted = async (req, res) => {
 }
 
 // Hàm xử lí chỉnh sửa sản phẩm
-exports.update =(req, res) => {
-    products.findOneAndUpdate({ _id: req.params.id },{$set:{
-        name: req.body.name,
-        price: req.body.price,
-        describe: req.body.describe,
-        soluong: req.body.soluong,
-    }} , (err, docs) => {
-        if (err) {
-            console.log(err)
+exports.update = (req, res) => {
+    upload1(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            console.log("Error when uploading.");
+        } else if (err) {
+            console.log("An unknown error " + err);
         } else {
-            res.status(200).send();
-            console.log("Updated User : ", docs);
+            products.findOneAndUpdate({ _id: req.params.id }, {
+                $set: {
+                    name: req.body.name,
+                    price: req.body.price,
+                    describe: req.body.describe,
+                    soluong: req.body.soluong,
+                    // image: req.file.filename,
+                }
+            }, (err, docs) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.status(200).send();
+                    console.log("Updated User : ", docs);
+                }
+            })
         }
-    })
+
+    });
 
 }
 
