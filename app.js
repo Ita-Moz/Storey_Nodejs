@@ -25,7 +25,8 @@ app.set('view engine', 'ejs');
 app.set('views', "./views");
 
 //router
-app.use('/Storey',require('./routes/index'));
+app.use('/Storey',require('./routes/admin_Router'));
+app.use('/Shop',require('./routes/user_Router'));
 
 app.listen(port, function(err){
     if (err) console.log(err);
