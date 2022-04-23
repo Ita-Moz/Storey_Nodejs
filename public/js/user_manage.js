@@ -55,7 +55,6 @@ $(document).ready(function () {
                 success: function (response) {
                     $("div#myModalEdit").modal("hide");
                     alert("Cập nhật thành công");
-                    location.reload();
                 },
                 error: function (err) {
                     console.log(err);
@@ -128,7 +127,6 @@ $(document).ready(function () {
                             success: function (response) {
                                 $("div#myModalEdit").modal("hide");
                                 alert("Cập nhật thành công");
-                                location.reload();
                             },
                             error: function (err) {
                                 console.log(err);
