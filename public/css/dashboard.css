@@ -476,7 +476,7 @@ body {
   color: var(--action-color);
 }
 .tableView .sort-button svg {
-  width: 12px;
+  width: 24px;
 }
 .tableView .cell-label {
   display: none;

@@ -1,4 +1,26 @@
 $(document).ready(function () {
+  //click delete
+  $('button.btn_delete').click(function () {
+    const id = $(this).attr('data-id');
+    const image = $(this).attr('data-image');
+
+    if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này - " + id) == true) {
+      $.ajax({
+        type: 'DELETE',
+        url: 'http://localhost:3000/Storey/deleted/' + id + "/" + image,
+        success: function (response) {
+          $('.delete-row' + id).remove('div')
+          alert("Xoá thành công ")
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      });
+    } else {
+      console.log("404")
+    }
+  })
+
   // Mở modal và nhận giá trị truyền từ view vào modal
   $("button.btn_edit").click(function (event) {
     $('div#myModalEdit').modal('show');
@@ -12,7 +34,6 @@ $(document).ready(function () {
         $('#mota').val(response.describe)
         $('#soluong').val(response.soluong)
         $('#gia').val(response.price)
-        $('#hinhanhsanpham').val(response.image)
       }
     });
   })
@@ -129,28 +150,7 @@ $(document).ready(function () {
 
   })
 
-  //click delete
-  $('button.btn_delete').click(function () {
-    const id = $(this).attr('data-id');
-    const image = $(this).attr('data-image');
-
-    if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này - " + id) == true) {
-      $.ajax({
-        type: 'DELETE',
-        url: 'http://localhost:3000/Storey/deleted/' + id + "/" + image,
-        success: function (response) {
-          $('.delete-row' + id).remove('div')
-          alert("Xoá thành công ")
-        },
-        error: function (err) {
-          console.log(err);
-        }
-      });
-    } else {
-      console.log("404")
-    }
-  })
-
+  
 
 
 
