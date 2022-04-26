@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let controller = require('../controllers/admin_controller');
+let controller = require('../controllers/product_controller');
 
 // Render giao diện SHOP
 router.get('/', (req, res) => {
@@ -26,9 +26,7 @@ router.get('/gio-hang', (req, res) => {
 router.get('/chi-tiet-san-pham', (req, res) => {
     res.render('shop_chi_tiet_san_pham')
 })
-router.get('/dong-ho-nam', (req, res) => {
-    res.render('shop_dong_ho_nam')
-})
+router.get('/dong-ho-nam',controller.render_product)
 router.get('/dong-ho-nu', (req, res) => {
     res.render('shop_dong_ho_nu')
 })

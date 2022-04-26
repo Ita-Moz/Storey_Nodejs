@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const port = 3000;
 
-mongoose.connect("mongodb+srv://ldplayer:ldplayer@cluster0.c2cz4.mongodb.net/productADMIN?retryWrites=true&w=majority" , { useNewUrlParser : true, useUnifiedTopology : true},(err)=>{
+mongoose.connect("mongodb+srv://ldplayer:ldplayer@cluster0.c2cz4.mongodb.net/Storey?retryWrites=true&w=majority" , { useNewUrlParser : true, useUnifiedTopology : true},(err)=>{
     if(err){
         console.error("Error ket noi")
     }else{

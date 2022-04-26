@@ -125,73 +125,20 @@
                     </div>
                     <div class="col-xl-9">
                         <div class="row g-3">
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="../html/chitietsanpham.html">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                            
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="../html/chitietsanpham.html">Watch</a>
-                                    <span class="product-price">$100 </span>
+                            <% data.forEach(item => { %>
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="product">
+                                        <figure class="product-image">
+                                            <a href="../html/chitietsanpham.html">
+                                                <img src="/public/image/<%- item.image  %>" alt="<%- item.name  %>" />
+                                                
+                                            </a>
+                                        </figure>
+                                        <a class="product-title" href="../html/chitietsanpham.html"><%- item.name  %> </a>
+                                        <span class="product-price"><%- item.price %> VND </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Black Karlo Backpack</a>
-                                    <span class="product-price">$88 </span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Black Closca Helmet</a>
-                                    <span class="product-price">$132 </span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Speaker</a>
-                                    <span class="product-price">$100 </span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Gravel Black Sigg Water Bottle</a>
-                                    <span class="product-price">$23 </span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-4">
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Headphones</a>
-                                    <span class="product-price">$100 </span>
-                                </div>
-                            </div>
+                            <% }) %>          
                         </div>
                     </div>
                 </div>
