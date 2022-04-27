@@ -20,3 +20,13 @@ exports.detail_product = async (req, res) => {
         return err;
     }
 }
+// Get các sản phẩm bán chạy trang home
+exports.home_product = async (req, res) => {
+    try {
+        const homeProducts = await products.find().limit(6);
+        return res.status(200).render('shop_home', { list : homeProducts });
+    }
+    catch (err) {
+        return err;
+    }
+}

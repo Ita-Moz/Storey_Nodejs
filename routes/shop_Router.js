@@ -2,9 +2,8 @@ const router = require('express').Router();
 let controller = require('../controllers/product_controller');
 
 // Render giao diện SHOP
-router.get('/', (req, res) => {
-    res.render('shop_home')
-})
+router.get('/', controller.home_product)
+
 router.get('/gioi-thieu', (req, res) => {
     res.render('shop_gioi_thieu')
 })
