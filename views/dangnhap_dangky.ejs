@@ -75,12 +75,20 @@
             return true;
         }
 
-
         $(document).ready(function () {
             $("#txtTennd").blur(kiemtraTennd);
             $("#txtTentk").blur(kiemtraTentk);
             $("#txtMatkhau").blur(kiemtraMatkhau);
             $("#txtEmail").blur(kiemtraemail);
+             //check validate button sign-in
+            $("#btn_dangky").click(function () {
+                if (kiemtraTennd() == false || kiemtraMatkhau() == false || kiemtraTentk() == false || kiemtraemail() == false) {
+                    alert("Thông tin chưa đủ, vui lòng nhập lại!");
+                    return false;
+                }
+                alert('Đăng kí thành công!');
+                return true;
+            });
         });
 
 
