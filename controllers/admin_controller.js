@@ -38,7 +38,7 @@ var upload1 = multer({
 //Hiển thị tất cả các sản phẩm
 exports.show = async (req, res) => {
     try {
-        const allProducts = await products.find();
+        const allProducts = await products.find().sort('soluong');
         return res.status(200).render('dashboard', { danhsach: allProducts });
     }
     catch (err) {
@@ -91,7 +91,7 @@ exports.add = (req, res) => {
 // Hàm xử lí tìm kiếm nhiều sản phẩm có bằng (NAME)
 exports.search = async (req, res) => {
     try {
-        let allSearch = await products.find({ name: req.params.name });
+        let allSearch = await products.find({ name: req.params.name }).sort('soluong');
         if (allSearch.length == 0) {
             res.send("Sản phẩm không tồn tại!!!");
         } else {
@@ -133,7 +133,7 @@ exports.deleted = async (req, res) => {
 }
 
 // Hàm xử lí chỉnh sửa sản phẩm
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
     upload1(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             console.log("Error when uploading.");
@@ -150,12 +150,12 @@ exports.update = (req, res) => {
                 }
             }, (err, docs) => {
                 if (err) {
-                    console.log(err)
+                    console.log(err);
                 } else {
                     res.status(200).send();
                     console.log("Updated User : ", docs);
                 }
-            })
+            }).sort('soluong');
         }
 
     });
