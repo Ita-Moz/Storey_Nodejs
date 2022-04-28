@@ -36,7 +36,7 @@ exports.home_product = async (req, res) => {
 exports.search_display = async (req, res) => {
     try {
         console.log(req.body.txtSearch)
-        let productSearch = await products.find({ name: { $regex: 'DAMAIN' } });
+        let productSearch = await products.find({ name: { $regex: "DAMAIN" } });
         if (productSearch.length == 0) {
             res.send("Sản phẩm không tồn tại!!!");
         } else {

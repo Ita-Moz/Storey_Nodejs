@@ -126,8 +126,10 @@ $(document).ready(function () {
           var data = {
             name: $("#tensanpham").val(),
             describe: $("#mota").val(),
+            loai: $("#loai").val(),
             price: $("#gia").val(),
             soluong: $("#soluong").val(),
+            image: $("#hinhanhsanpham").val(),
           }
           if (confirm("Bạn có chắc chắn muốn cập nhật sản phẩm này - " + id) == true) {
             $.ajax({
