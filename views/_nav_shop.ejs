@@ -1,3 +1,4 @@
+<script src="/public/bootrap/jquery-3.6.0.min.js"></script>
 <!-- navbar -->
 <nav id="mainNav" class="navbar navbar-expand-lg navbar-sticky navbar-light border-bottom">
     <div class="container">
@@ -76,11 +77,11 @@
                     <div class="grouped-inputs border" style="margin-left: 120px;">
                         <div class="row ">
                             <div class="col">
-                                <input type="text" class="form-control form-control text-primary"
+                                <input id="txtSearch" name="txtSearch" type="text" class="form-control form-control text-primary"
                                     aria-label="Text input with dropdown button" placeholder="Bạn đang tìm gì?">
                             </div>
                             <div class="col-auto d-grid">
-                                <a href="#" class="btn-icon rounded-circle"><i class="bi bi-search"
+                                <a href="http://localhost:3000/shop/search"  class="btn-icon rounded-circle"><i class="bi bi-search"
                                         style="color: black; font-size: larger;"></i></a>
                             </div>
                         </div>
@@ -194,3 +195,21 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#txtSearch').blur(function () { 
+            var data = {
+                name : $('#txtSearch').val()
+            }
+            $.ajax({
+                type: "get",
+                url: "http://localhost:3000/shop/search",
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    
+                }
+            });
+        });
+    });
+</script>

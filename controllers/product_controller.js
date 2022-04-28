@@ -35,11 +35,12 @@ exports.home_product = async (req, res) => {
 // Get các sản phẩm được SEARCH
 exports.search_display = async (req, res) => {
     try {
-        let allSearch = await products.find({ name: { $regex: req.params.name } }).sort('soluong');
-        if (allSearch.length == 0) {
+        console.log(req.body.txtSearch)
+        let productSearch = await products.find({ name: { $regex: 'DAMAIN' } });
+        if (productSearch.length == 0) {
             res.send("Sản phẩm không tồn tại!!!");
         } else {
-            return res.status(200).render('shop_search_display', { data: allSearch });
+            return await res.status(200).render('shop_search_display', { data: productSearch });
         }
     }
     catch (err) {
