@@ -36,6 +36,7 @@ $(document).ready(function () {
       success: function (response) {
         $('#btnSave').attr("data-id", response._id)
         $('#tensanpham').val(response.name)
+        $('#loai').val(response.loai)
         $('#mota').val(response.describe)
         $('#soluong').val(response.soluong)
         $('#gia').val(response.price)
@@ -49,6 +50,7 @@ $(document).ready(function () {
     var data = {
       name: $("#tensanpham").val(),
       describe: $("#mota").val(),
+      loai: $("#loai").val(),
       price: $("#gia").val(),
       soluong: $("#soluong").val(),
       image: $("#hinhanhsanpham").val(),

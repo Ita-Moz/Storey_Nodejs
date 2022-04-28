@@ -59,6 +59,7 @@ exports.add = (req, res) => {
             products.create({
                 name: req.body.txtName,
                 image: req.file.filename,
+                loai: req.body.loai,
                 soluong: req.body.txtSoluong,
                 price: req.body.txtPrice,
                 describe: req.body.txtDescribe,
@@ -129,10 +130,10 @@ exports.update = async (req, res) => {
             products.findOneAndUpdate({ _id: req.params.id }, {
                 $set: {
                     name: req.body.name,
+                    loai: req.body.loai,
                     price: req.body.price,
                     describe: req.body.describe,
                     soluong: req.body.soluong,
-                    // image: req.file.filename,
                 }
             }, (err, docs) => {
                 if (err) {
