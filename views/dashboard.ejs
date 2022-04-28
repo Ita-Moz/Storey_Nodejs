@@ -2,6 +2,7 @@
 	<%- include('_head') %>
 </head>
 <script src="/controllers/admin_controller.js"></script>
+<script src="/public/js/product_manage.js"></script>
 
 <body>
 	<div class="app-container">
@@ -91,7 +92,7 @@
 					<img src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
 						alt="Account">
 				</div>
-				<div class="account-info-name">Monica G.</div>
+				<div class="account-info-name">ADMIN ♫</div>
 				<button class="account-info-more">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -113,8 +114,8 @@
 						<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
 					</svg>
 				</button>
-				<a href="http://localhost:3000/Storey/add"><button class="app-content-headerButton">Add
-						Product</button></a>
+				<button class="app-content-headerButton" id="btnAddProduct">Add
+					Product</button>
 			</div>
 
 			<div class="app-content-actions">
@@ -195,7 +196,7 @@
 									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
 							</svg>
 						</button></div>
-					<div class="product-cell status-cell">Status<button class="sort-button">
+					<div class="product-cell status-cell">Loại<button class="sort-button">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
 								<path fill="currentColor"
 									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
@@ -222,9 +223,7 @@
 				</div>
 				<!-- add row search -->
 				<div style="color:white;" id="addRowSeach"></div>
-				<!-- modal	 -->
 
-				<!--  -->
 				<% danhsach.forEach((element,index)=> { %>
 					<div class="products-row delete-row<%- element._id %> ">
 						<button class="cell-more-button">
@@ -243,17 +242,21 @@
 							</span>
 						</div>
 						<div class="product-cell category"><span class="cell-label">Category:</span>
-							<%- element.describe %>
+							<p id="txtmota">
+								<%- element.describe %>
+							</p>
 						</div>
 						<div class="product-cell status-cell">
-							<span class="cell-label">Status:</span>
-							<span class="status active">Active</span>
+							<span class="cell-label">Loại:</span>
+							<span class="status active">
+								<%- element.loai %>
+							</span>
 						</div>
 						<div class="product-cell stock"><span class="cell-label">Stock:</span>
 							<%- element.soluong %>
 						</div>
 						<div class="product-cell price"><span class="cell-label">Price:</span>
-							<%- element.price %>
+							$<%- element.price %>
 						</div>
 						<div class="product-cell sales d-flex justify-content-around"><span
 								class="cell-label ">Sales:</span>
@@ -266,84 +269,141 @@
 						</div>
 					</div>
 
-					<!-- Modal Update -->
-					<div class="modal fade" id="myModalEdit" tabindex="1" role="dialog" aria-labelledby="modelTitleId"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
 
-									<h3 class="modal-title " style="font-weight: bolder;color: green;">Cập nhật thông
-										tin sản phẩm
-									</h3>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<div>
-										<form>
-											<div class="form-floating">
-												<label for="tensanpham">
-													<span style="font-weight: bolder;font-size: large;"> Tên sản phẩm
-													</span>
-												</label>
-												<input type="tel" class="form-control" id="tensanpham"
-													placeholder="Tên sản phẩm" value="<%- element.name %> ">
+					<% }) %>
 
-											</div>
+						<!-- Modal Update -->
+						<div class="modal fade" id="myModalEdit" tabindex="1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
 
-											<div class="form-floating mb-3">
-												<label for="hinhanhsanpham">
-													<span style="font-weight: bolder;font-size: large;">Hình ảnh sản
-														phẩm
-													</span>
-												</label>
-												<input type="file" class="form-control" id="hinhanhsanpham"
-													value="<%- element.image %>" required>
-											</div>
-
-											<div class="form-floating mb-3">
-												<label for="mota">
-													<span style="font-weight: bolder;font-size: large;">Mô tả</span>
-												</label>
-												<input type="text" class="form-control" id="mota" placeholder="Mô tả"
-													value="<%- element.describe %>">
-											</div>
-
-											<div class="form-floating mb-3">
-												<label for="soluong">
-													<span style="font-weight: bolder;font-size: large;">Số lượng</span>
-												</label>
-												<input type="number" class="form-control" id="soluong"
-													value="<%- element.soluong%>" placeholder="Số lượng">
-											</div>
-
-											<div class="form-floating mb-3">
-												<label for="gia">
-													<span style="font-weight: bolder;font-size: large;">Giá</span>
-												</label>
-												<input type="number" class="form-control" id="gia" placeholder="Giá"
-													value="<%- element.price %>">
-
-											</div>
-
-											<button type="button" class="w-100 btn btn-lg btn-success" id="btnSave">Cập
-												nhật</button>
-
-										</form>
+										<h3 class="modal-title " style="font-weight: bolder;color: green;">Cập nhật
+											thông tin sản phẩm
+										</h3>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
 									</div>
-								</div>
+									<div class="modal-body">
+										<div>
+											<form enctype="multipart/form-data">
+												<div class="form-floating">
+													<label for="tensanpham">
+														<span style="font-weight: bolder;font-size: large;"> Tên sản
+															phẩm
+														</span>
+													</label>
+													<input type="text" name="nameproduct" class="form-control"
+														id="tensanpham" placeholder="Tên sản phẩm" value="">
 
-								<div class="footer">
-									<p class="mt-1 mb-3 text-muted ml-2 text-center">Copyright &copy; 2021 - Design by
-										SinhVienIUH
-									</p>
+												</div>
+												<label for="loai" class="form-label">Loại</label>
+												<select class="form-control" id="loai" name="loai" required="">
+													<option value="">Choose...</option>
+													<option>Nam</option>
+													<option>Nữ</option>
+												</select>
+												<div class="form-floating mb-3">
+													<label for="hinhanhsanpham">
+														<span style="font-weight: bolder;font-size: large;">Hình ảnh sản
+															phẩm
+														</span>
+													</label>
+													<input type="file" name="image-product" class="form-control"
+														id="hinhanhsanpham" value="">
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="mota">
+														<span style="font-weight: bolder;font-size: large;">Mô tả</span>
+													</label>
+													<input type="text" name="describe-product" class="form-control"
+														id="mota" placeholder="Mô tả" value="">
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="soluong">
+														<span style="font-weight: bolder;font-size: large;">Số
+															lượng</span>
+													</label>
+													<input type="number" name="soluong-product" class="form-control"
+														id="soluong" value="" placeholder="Số lượng">
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="gia">
+														<span style="font-weight: bolder;font-size: large;">Giá</span>
+													</label>
+													<input type="number" name="price-product" class="form-control"
+														id="gia" placeholder="Giá" value="">
+
+												</div>
+
+												<button type="submit" data-id="" class="w-100 btn btn-lg btn-success"
+													id="btnSave">Cập nhật</button>
+											</form>
+										</div>
+									</div>
+
+									<div class="footer">
+										<p class="mt-1 mb-3 text-muted ml-2 text-center">Copyright &copy; 2021 - Design
+											by SinhVienIUH
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<% }) %>
+						<!-- Modal thêm sản phẩm -->
+						<div class="modal fade" id="myModalAddProduct" tabindex="1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+
+										<h3 class="modal-title " style="font-weight: bolder;color: green;">Thêm sản phẩm
+										</h3>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div>
+											<form action="http://localhost:3000/Storey/add" method="post"
+												enctype="multipart/form-data" class="container-fluid">
+												<label for="" class="form-label">Name:</label>
+												<input class="form-control" type="text" name="txtName" required>
+												<label for="loai" class="form-label">Loại</label>
+												<select class="form-control" id="loai" name="loai" required="">
+													<option value="">Choose...</option>
+													<option>Nam</option>
+													<option>Nữ</option>
+												</select>
+
+												<label for="" class="form-label">Số lượng:</label>
+												<input class="form-control" type="number" name="txtSoluong" required>
+												<label for="" class="form-label">Image:</label>
+												<input class="form-control" type="file" name="txtFile" required>
+												<label for="" class="form-label">Price:</label>
+												<input class="form-control" type="number" name="txtPrice" required>
+												<label for="" class="form-label">Mo ta:</label>
+												<input class="form-control" type="text" name="txtDescribe" required>
+												<input type="submit" value="Thêm" id="btnAdd"
+													class=" form-control mt-2 btn btn-light btn-outline-success"
+													required>
+											</form>
+										</div>
+									</div>
+
+									<div class="footer">
+										<p class="mt-1 mb-3 text-muted ml-2 text-center">Copyright &copy; 2021 - Design
+											by SinhVienIUH
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
 			</div>
 
 		</div>

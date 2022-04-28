@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')    
-const AccountUser = mongoose.Schema({
+const accountUser = mongoose.Schema({
     
-    tentaikhoan : {
+    tennguoidung : {
         type : String,
         require: true
     },
-    tennguoidung : {
+    tentaikhoan : {
         type : String,
         require: true
     },
@@ -18,4 +18,4 @@ const AccountUser = mongoose.Schema({
         require: true
     },
 })
-module.exports =  mongoose.model( 'account_user' , AccountUser)
+module.exports =  mongoose.model( 'account_user' , accountUser)

@@ -1,0 +1,125 @@
+<%- include('_head_shop') %>
+<body>
+    <!-- navbar -->
+  <%- include('_nav_shop') %> 
+
+
+    <section class="py-15 py-xl-20">
+        <div class="container mt-5 mt-lg-10">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1>Interested in working together? Contact!</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate odio ipsa provident ducimus
+                        tenetur quos
+                        architecto voluptatibus inventore similique, hic sunt nisi officia eaque alias magni minima
+                        recusandae nobis
+                        quia.</p>
+                    <hr class="my-4 fw-25 ml-0">
+                    <ul class="list-group list-group-minimal">
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Email</span>
+                            contact@storey.com
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Phone</span>
+                            0123456789
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Facebook</span>
+                            @storey
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Instagram</span>
+                            @storey
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">TikTok</span>
+                            @storey
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="media equal-1-1">
+                        <div id="map1" class="map"></div>
+                    </div>
+                    <div class="card bg-black text-white">
+                        <div class="card-body">
+                            <p>12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Tp. Hồ Chí Minh </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- contact -->
+    <section class="py-15 py-xl-20 border-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mb-5">
+                    <h2>Let's make something big. <span class="d-block">Together.</span></h2>
+                </div>
+                <div class="col-lg-8">
+                    <form action="#" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="yourName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="yourName" placeholder="Your Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="yourCompany" class="form-label">Your Company</label>
+                            <input type="text" class="form-control" id="yourCompany" placeholder="Your Company">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="yourMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="yourMessage" rows="3" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label text-muted small" for="gridCheck">
+                                    I accept the <a href="" class="underline">Terms
+                                        & Conditions</a> and acknowledge that my information will be used in accordance
+                                    with Privacy
+                                    Policy.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="" class="btn btn-block btn-primary rounded-pill">Get in touch</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        function initMap() {
+            var latlng = new google.maps.LatLng(10.822369180979088, 106.68745701523065);
+
+            var myOptions = {
+                zoom: 18,
+                center: latlng,
+                disableDefaultUI: true,
+
+
+            };
+
+            var map = new google.maps.Map(document.getElementById("map1"), myOptions);
+
+            map.panBy(-100, -40);
+
+            var myMarker = new google.maps.Marker(
+                {
+                    position: latlng,
+                    map: map
+
+                });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAME5wJgLdn1aQSxC7-iWxJ3isuveK9Rv4&callback=initMap"
+        async defer></script>
+</body>
+<%- include('_footer_shop') %>

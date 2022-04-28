@@ -1,0 +1,217 @@
+<%- include('_head_shop') %>
+    <style>
+        .txtThuGon {
+            width: 350px;
+            padding: 2px 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+    <body>
+
+        <!-- navbar -->
+        <%- include('_nav_shop') %>
+
+            <div class="offcanvas-wrap">
+
+                <!-- presentation -->
+                <section class="py-20">
+                    <div class="container mt-10">
+                        <div class="row g-5 justify-content-center justify-content-lg-between">
+                            <div class="col-lg-6 position-relative">
+                                <div class="row g-1">
+                                    <div class="col-md-10 order-md-2">
+                                        <div class="carousel">
+                                            <div
+                                                data-carousel='{"mouseDrag": true, "navContainer": "#nav-1", "gutter": 8, "loop": true, "items": 1}'>
+
+                                                <div class="item">
+                                                    <img src="/public/image/<%- listdetail.image  %> " alt="Image">
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 order-md-1">
+                                        <div class="carousel-thumbs d-flex flex-row flex-md-column" id="nav-1">
+
+                                            <div>
+                                                <img class="img-fluid" src="/public/image/<%- listdetail.image  %>"
+                                                    alt="Image">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-5">
+
+                                <h1 class="mb-1">
+                                    <%- listdetail.name %>
+                                </h1>
+                                <div class="fs-5 mb-3">
+                                    $<%- listdetail.price %> <s class="text-muted ms-1">
+                                            $<%- listdetail.price - 10 %>
+                                        </s>
+                                </div>
+
+                                <p class="text-secondary mb-3 txtThuGon">
+                                    <%- listdetail.describe %>
+                                </p>
+
+                                <div class="d-flex align-items-center mb-3">
+                                    <ul class="rating text-yellow me-2 fs-6">
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                    </ul>
+                                    <a href="" class="underline action fs-sm text-black">Xem tất cả đánh giá <i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
+
+
+                                <div class="accordion mb-3" id="accordion-1">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading-1-1">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapse-1-1"
+                                                aria-expanded="false" aria-controls="collapse-1-1">
+                                                Mô tả sản phẩm
+                                            </button>
+                                        </h2>
+                                        <div id="collapse-1-1" class="accordion-collapse collapse"
+                                            aria-labelledby="heading-1-1" data-bs-parent="#accordion-1">
+                                            <div class="accordion-body">
+
+                                                <p class="text-secondary">
+                                                    <%- listdetail.describe %>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row g-1 align-items-center">
+                                    <div class="col">
+                                        <div class="d-grid">
+                                            <a href="" class="btn btn-primary btn-lg rounded-pill">Thêm vào giỏ
+                                                hàng</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="" class="btn btn-outline-secondary btn-lg btn-icon rounded-circle"><i
+                                                class="bi bi-heart-fill"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- reviews -->
+                <section class="py-15 py-xl-20 bg-light">
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="col-xl-5 mb-5 mb-xl-0">
+                                <h2 class="mb-2">Đánh giá sản phẩm</h2>
+                                <a href="" class="underline action">Viết đánh giá <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="col-xl-7">
+                                <div class="row g-2" data-masonry>
+                                    <div class="col-md-6">
+                                        <div class="card bg-white">
+                                            <div class="card-body">
+                                                <ul class="rating text-yellow fs-lg">
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                </ul>
+                                                <p class="fs-lg text-secondary my-4">Lorem ipsum dolor, sit amet
+                                                    consectetur
+                                                    adipisicing elit. Alias
+                                                    quam
+                                                    ipsa
+                                                    dolorem et, consequatur ipsum</p>
+                                                <p class="lh-1 fs-lg">Michael Doe</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-white">
+                                            <div class="card-body">
+                                                <ul class="rating text-yellow fs-lg">
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star-fill"></i></li>
+                                                    <li><i class="bi bi-star"></i></li>
+                                                </ul>
+                                                <p class="fs-lg text-secondary my-4">Lorem ipsum dolor, sit amet
+                                                    consectetur
+                                                    adipisicing elit.</p>
+                                                <p class="lh-1 fs-lg">Michael Doe</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+            <!-- product carousel -->
+            <section class="py-15 py-xl-20 overflow-hidden">
+                <div class="container">
+                    <div class="row align-items-end mb-6">
+                        <div class="col-lg-8">
+                            <h2 class="fw-bold">Có thể bạn cũng thích</h2>
+                        </div>
+                    </div>
+                    <div class="carousel carousel-visible">
+                        <div
+                            data-carousel='{"nav": false,"mouseDrag": true, "gutter": 32, "loop": true, "responsive": {"0": {"items": 1}, "768": {"items": 2}, "992": {"items": 2}, "1200": {"items": 3}}}'>
+                            <% likelist.forEach(element=> { %>
+                                <div>
+                                    <div class="product">
+                                        <figure class="product-image">
+                                            <a href="http://localhost:3000/shop/chi-tiet-san-pham/<%- element._id %> ">
+                                                <img src="/public/image/<%- element.image %> " alt="Image" />
+                                                <img src="/public/image/<%- element.image %>" alt="Image" />
+                                            </a>
+                                        </figure>
+                                        <a class="product-title"
+                                            href="http://localhost:3000/shop/chi-tiet-san-pham/<%- element._id %>">
+                                            <%- element.name %>
+                                        </a>
+                                        <span class="product-price">
+                                            <%- element.price %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <% }) %>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </body>
+    <%- include('_footer_shop') %>

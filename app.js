@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const port = 3000;
 
-mongoose.connect("mongodb+srv://ldplayer:ldplayer@cluster0.c2cz4.mongodb.net/productADMIN?retryWrites=true&w=majority" , { useNewUrlParser : true, useUnifiedTopology : true},(err)=>{
+mongoose.connect("mongodb+srv://ldplayer:ldplayer@cluster0.c2cz4.mongodb.net/Storey?retryWrites=true&w=majority" , { useNewUrlParser : true, useUnifiedTopology : true},(err)=>{
     if(err){
         console.error("Error ket noi")
     }else{
@@ -17,14 +17,16 @@ app.use('/public',express.static('public'));
 
 //body-parser
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); 
 
 //views engine
 app.set('view engine', 'ejs');
 app.set('views', "./views");
 
 //router
-app.use('/Storey',require('./routes/index'));
+app.use('/Storey',require('./routes/admin_Router'));
+app.use('/Shop',require('./routes/shop_Router'));
 
 app.listen(port, function(err){
     if (err) console.log(err);

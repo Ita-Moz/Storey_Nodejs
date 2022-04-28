@@ -1,8 +1,9 @@
 <head>
-	<%- include('../views/_head') %>
+	<%- include('_head') %>
 </head>
+
 <script src="/controllers/account_controller.js"></script>
-<script src="/controllers/admin_controller.js"></script>
+<script src="/public/js/user_manage.js"></script>
 
 <body>
 	<div class="app-container">
@@ -27,7 +28,7 @@
 						<span>Home</span>
 					</a>
 				</li>
-			
+
 				<li class="sidebar-list-item ">
 					<a href="http://localhost:3000/Storey/dashboard">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -93,7 +94,7 @@
 					<img src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
 						alt="Account">
 				</div>
-				<div class="account-info-name">Monica G.</div>
+				<div class="account-info-name">ADMIN ♫</div>
 				<button class="account-info-more">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -107,7 +108,7 @@
 		</div>
 		<div class="app-content">
 			<div class="app-content-header">
-				<h1 class="app-content-headerText">Products</h1>
+				<h1 class="app-content-headerText">Quản lý User</h1>
 				<button class="mode-switch" title="Switch Theme">
 					<svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
 						stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
@@ -115,8 +116,9 @@
 						<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
 					</svg>
 				</button>
-				<a href="http://localhost:3000/Storey/add"><button class="app-content-headerButton">Add
-						Product</button></a>
+				<a href="http://localhost:3000/Storey/login">
+					<button class="app-content-headerButton">Login - Register</button>
+				</a>
 			</div>
 
 			<div class="app-content-actions">
@@ -182,51 +184,43 @@
 			<div class="products-area-wrapper tableView">
 
 				<div class="products-header">
-					<div class="product-cell image">
-						Sản phẩm
+					<div class="product-cell stock">
 						<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
+							<i class="fa-solid fa-file-signature"></i>
 						</button>
+						Tên người dùng
 					</div>
-					<div class="product-cell category">Mô tả<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
-						</button></div>
-					<div class="product-cell status-cell">Status<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
-						</button></div>
-					<div class="product-cell stock">Số lượng<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
-						</button></div>
-					<div class="product-cell price">Price<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
-						</button></div>
-					<div class="product-cell sales">Hành động<button class="sort-button">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
-								<path fill="currentColor"
-									d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z" />
-							</svg>
-						</button></div>
+					<div class="product-cell category">
+						<button class="sort-button">
+							<i class="fa-solid fa-circle-user"></i>
+						</button>
+						Tài khoản
+					</div>
+
+					<div class="product-cell stock">
+						<button class="sort-button">
+							<i class="fa-solid fa-key"></i>
+						</button>
+						Mật khẩu
+					</div>
+					<div class="product-cell price">
+						<button class="sort-button">
+							<i class="fa-solid fa-envelope"></i>
+						</button>
+						Email
+					</div>
+					<div class="product-cell sales">
+						<button class="sort-button">
+							<i class="fa-solid fa-floppy-disk"></i>
+						</button>
+						Hành động
+					</div>
 				</div>
 				<!-- add row search -->
 				<div style="color:white;" id="addRowSeach"></div>
 				<!--  -->
 				<% accountUser.forEach((element,index)=> { %>
-					<div class="products-row delete-row<%- element._id %>" data-row="<%- element._id  %>">
+					<div class="products-row delete-row<%- element._id %>">
 						<button class="cell-more-button">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
 								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -236,28 +230,99 @@
 								<circle cx="12" cy="19" r="1" />
 							</svg>
 						</button>
-						
-						<div class="product-cell category"><span class="cell-label">Tên tài khoản:</span>
+
+						<div class="product-cell category"><span class="cell-label">Tên người dùng:</span>
+							<%- element.tennguoidung %>
+						</div>
+
+						<div class="product-cell category "><span class="cell-label">Tên tài khoản:</span>
 							<%- element.tentaikhoan %>
 						</div>
-						<div class="product-cell status-cell">
-							<span class="cell-label">Status:</span>
-							<span class="status active">Active</span>
-						</div>
+
 						<div class="product-cell stock"><span class="cell-label">Tên người dùng:</span>
-							<%- element.tennguoidung%>
+							<%- element.matkhau%>
 						</div>
 						<div class="product-cell price"><span class="cell-label">Email:</span>
 							<%- element.email %>
 						</div>
 						<div class="product-cell sales d-flex justify-content-around"><span
 								class="cell-label ">Sales:</span>
-							<button class="btn btn-primary v">
+							<button data-id="<%- element._id  %>" class="btn btn-primary btn_edit">
 								<i class="fa-solid fa-pen-to-square"></i></button>
 							<button data-id="<%- element._id  %>" class="btn btn-danger btn_delete">
 								<i class="fa-solid fa-trash"></i></button>
 						</div>
 					</div>
 					<% }) %>
+
+						<!-- Modal Update -->
+						<div class="modal fade" id="myModalEdit" tabindex="1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+
+										<h3 class="modal-title " style="font-weight: bolder;color: green;">Cập nhật
+											thông tin người dùng
+										</h3>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div>
+											<form enctype="multipart/form-data">
+												<div class="form-floating">
+													<label for="tennguoidung">
+														<span style="font-weight: bolder;font-size: large;"> Tên người
+															dùng
+														</span>
+													</label>
+													<input type="text" name="name-user" class="form-control"
+														id="tennguoidung" placeholder="Tên người dùng" value="">
+
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="taikhoan">
+														<span style="font-weight: bolder;font-size: large;">Tên tài khoản
+														</span>
+													</label>
+													<input type="text" name="account-user" class="form-control"
+														id="taikhoan" placeholder="Tên tài khoản" value="">
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="matkhau">
+														<span style="font-weight: bolder;font-size: large;">Mật khẩu</span>
+													</label>
+													<input type="text" name="password-user" class="form-control"
+														id="matkhau" placeholder="Mật khẩu" value="">
+												</div>
+
+												<div class="form-floating mb-3">
+													<label for="email">
+														<span style="font-weight: bolder;font-size: large;">Email</span>
+													</label>
+													<input type="text" name="email-user" class="form-control" id="email"
+														value="" placeholder="Email">
+												</div>
+
+												<button type="submit" data-id="" class="w-100 btn btn-lg btn-success"
+													id="btnSave">Cập nhật</button>
+											</form>
+										</div>
+									</div>
+
+									<div class="footer">
+										<p class="mt-1 mb-3 text-muted ml-2 text-center">Copyright &copy; 2021 - Design
+											by SinhVienIUH
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
 			</div>
 		</div>
+	</div>
+</body>

@@ -6,6 +6,7 @@ let schema = mongoose.Schema({
         default:"Storey-name"
     },
     image:String,
+    loai: String,
     soluong: {
         type: Number,
         require: true,
