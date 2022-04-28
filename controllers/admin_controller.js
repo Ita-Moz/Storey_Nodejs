@@ -46,10 +46,7 @@ exports.show = async (req, res) => {
     }
 }
 
-// show View thêm sản phẩm
-exports.add_show = (req, res) => {
-    res.render('add_product')
-}
+
 
 // Truyền giá trị mặc định cho modal update
 exports.val_update = async (req, res) => {

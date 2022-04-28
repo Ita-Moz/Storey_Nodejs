@@ -21,6 +21,11 @@ $(document).ready(function () {
     }
   })
 
+  //Open modal add product
+  $('#btnAddProduct').click(function(){
+    $('#myModalAddProduct').modal('show');
+  })
+
   // Mở modal và nhận giá trị truyền từ view vào modal
   $("button.btn_edit").click(function (event) {
     $('div#myModalEdit').modal('show');

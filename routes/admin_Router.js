@@ -4,7 +4,6 @@ const accountController = require('../controllers/account_controller');
 // Quản lí Products
     // Xử lí giao diện
 router.get('/dashboard', controller.show);
-router.get('/add', controller.add_show);
 router.get('/find-val-update/:id', controller.val_update);
     //Xử lí chức năng
 router.post('/add',controller.add);
