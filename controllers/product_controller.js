@@ -13,8 +13,10 @@ exports.render_product = async (req, res) => {
 // Get chi tiết sản phẩm 
 exports.detail_product = async (req, res) => {
     try {
-        const detailProducts = await products.find({_id:req.params.id});
-        return res.status(200).render('shop_chi_tiet_san_pham', { data: detailProducts });
+        let detailProducts = await products.findOne({ _id: req.params.id });
+        let priceProduct = await detailProducts.price;
+        const likeProducts = await products.find({ price: { $lte: await priceProduct } }).limit(10);
+        return await res.status(200).render('shop_chi_tiet_san_pham', { listdetail: detailProducts, likelist: likeProducts });
     }
     catch (err) {
         return err;
@@ -24,7 +26,7 @@ exports.detail_product = async (req, res) => {
 exports.home_product = async (req, res) => {
     try {
         const homeProducts = await products.find().limit(6);
-        return res.status(200).render('shop_home', { list : homeProducts });
+        return res.status(200).render('shop_home', { list: homeProducts });
     }
     catch (err) {
         return err;

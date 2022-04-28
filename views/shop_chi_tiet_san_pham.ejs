@@ -1,4 +1,13 @@
 <%- include('_head_shop') %>
+    <style>
+        .txtThuGon {
+            width: 350px;
+            padding: 2px 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 
     <body>
 
@@ -17,11 +26,11 @@
                                         <div class="carousel">
                                             <div
                                                 data-carousel='{"mouseDrag": true, "navContainer": "#nav-1", "gutter": 8, "loop": true, "items": 1}'>
-                                                <% data.forEach(element=> { %>
-                                                    <div class="item">
-                                                        <img src="/public/image/<%- element.image  %> " alt="Image">
-                                                    </div>
-                                                    <% }) %>
+
+                                                <div class="item">
+                                                    <img src="/public/image/<%- listdetail.image  %> " alt="Image">
+                                                </div>
+
 
 
 
@@ -30,84 +39,80 @@
                                     </div>
                                     <div class="col-md-2 order-md-1">
                                         <div class="carousel-thumbs d-flex flex-row flex-md-column" id="nav-1">
-                                            <% data.forEach(element=> { %>
-                                                <div>
-                                                    <img class="img-fluid" src="/public/image/<%- element.image  %>"
-                                                        alt="Image">
-                                                </div>
-                                                <% }) %>
+
+                                            <div>
+                                                <img class="img-fluid" src="/public/image/<%- listdetail.image  %>"
+                                                    alt="Image">
+                                            </div>
+
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-xl-5">
-                                <% data.forEach(element=> { %>
-                                    <h1 class="mb-1">
-                                        <%- element.name %>
-                                    </h1>
-                                    <div class="fs-5 mb-3">
-                                        <%- element.price %>VND <s class="text-muted ms-1">
-                                                <%- element.price - 10 %>VND
-                                            </s>
+
+                                <h1 class="mb-1">
+                                    <%- listdetail.name %>
+                                </h1>
+                                <div class="fs-5 mb-3">
+                                    $<%- listdetail.price %> <s class="text-muted ms-1">
+                                            $<%- listdetail.price - 10 %>
+                                        </s>
+                                </div>
+
+                                <p class="text-secondary mb-3 txtThuGon">
+                                    <%- listdetail.describe %>
+                                </p>
+
+                                <div class="d-flex align-items-center mb-3">
+                                    <ul class="rating text-yellow me-2 fs-6">
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                        <li><i class="bi bi-star-fill"></i></li>
+                                    </ul>
+                                    <a href="" class="underline action fs-sm text-black">Xem tất cả đánh giá <i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
+
+
+                                <div class="accordion mb-3" id="accordion-1">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading-1-1">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapse-1-1"
+                                                aria-expanded="false" aria-controls="collapse-1-1">
+                                                Mô tả sản phẩm
+                                            </button>
+                                        </h2>
+                                        <div id="collapse-1-1" class="accordion-collapse collapse"
+                                            aria-labelledby="heading-1-1" data-bs-parent="#accordion-1">
+                                            <div class="accordion-body">
+
+                                                <p class="text-secondary">
+                                                    <%- listdetail.describe %>
+                                                </p>
+
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <p class="text-secondary mb-3"><%- element.describe  %> 
-                                    </p>
-                                    <% }) %>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <ul class="rating text-yellow me-2 fs-6">
-                                                <li><i class="bi bi-star-fill"></i></li>
-                                                <li><i class="bi bi-star-fill"></i></li>
-                                                <li><i class="bi bi-star-fill"></i></li>
-                                                <li><i class="bi bi-star-fill"></i></li>
-                                                <li><i class="bi bi-star-fill"></i></li>
-                                            </ul>
-                                            <a href="" class="underline action fs-sm text-black">Xem tất cả đánh giá <i
-                                                    class="bi bi-arrow-right"></i></a>
+                                </div>
+
+                                <div class="row g-1 align-items-center">
+                                    <div class="col">
+                                        <div class="d-grid">
+                                            <a href="" class="btn btn-primary btn-lg rounded-pill">Thêm vào giỏ
+                                                hàng</a>
                                         </div>
-
-
-                                        <div class="accordion mb-3" id="accordion-1">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="heading-1-1">
-                                                    <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapse-1-1"
-                                                        aria-expanded="false" aria-controls="collapse-1-1">
-                                                        Mô tả sản phẩm
-                                                    </button>
-                                                </h2>
-                                                <div id="collapse-1-1" class="accordion-collapse collapse"
-                                                    aria-labelledby="heading-1-1" data-bs-parent="#accordion-1">
-                                                    <div class="accordion-body">
-                                                        <p class="text-secondary">Lorem ipsum, dolor sit amet
-                                                            consectetur
-                                                            adipisicing elit. Illo,
-                                                            voluptas. Quibusdam, quia. Accusantium, quo maxime est ullam
-                                                            at
-                                                            voluptas
-                                                            aspernatur. Iure
-                                                            assumenda labore esse vero ad. Deleniti ea totam dolorem.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row g-1 align-items-center">
-                                            <div class="col">
-                                                <div class="d-grid">
-                                                    <a href="" class="btn btn-primary btn-lg rounded-pill">Thêm vào giỏ
-                                                        hàng</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <a href=""
-                                                    class="btn btn-outline-secondary btn-lg btn-icon rounded-circle"><i
-                                                        class="bi bi-heart-fill"></i></a>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="" class="btn btn-outline-secondary btn-lg btn-icon rounded-circle"><i
+                                                class="bi bi-heart-fill"></i></a>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -182,63 +187,27 @@
                     <div class="carousel carousel-visible">
                         <div
                             data-carousel='{"nav": false,"mouseDrag": true, "gutter": 32, "loop": true, "responsive": {"0": {"items": 1}, "768": {"items": 2}, "992": {"items": 2}, "1200": {"items": 3}}}'>
-                            <div>
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                            <img src="../img/product-01.png" alt="Image" />
+                            <% likelist.forEach(element=> { %>
+                                <div>
+                                    <div class="product">
+                                        <figure class="product-image">
+                                            <a href="http://localhost:3000/shop/chi-tiet-san-pham/<%- element._id %> ">
+                                                <img src="/public/image/<%- element.image %> " alt="Image" />
+                                                <img src="/public/image/<%- element.image %>" alt="Image" />
+                                            </a>
+                                        </figure>
+                                        <a class="product-title"
+                                            href="http://localhost:3000/shop/chi-tiet-san-pham/<%- element._id %>">
+                                            <%- element.name %>
                                         </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Watch</a>
-                                    <span class="product-price">$100 </span>
+                                        <span class="product-price">
+                                            <%- element.price %>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
+                                <% }) %>
 
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Black Karlo Backpack</a>
-                                    <span class="product-price">$88 </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Black Closca Helmet</a>
-                                    <span class="product-price">$132 </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Speaker</a>
-                                    <span class="product-price">$100 </span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="product">
-                                    <figure class="product-image">
-                                        <a href="#!">
-                                            <img src="../img/product-01.png" alt="Image" />
-                                        </a>
-                                    </figure>
-                                    <a class="product-title" href="#!">Gravel Black Sigg Water Bottle</a>
-                                    <span class="product-price">$23 <s class="text-muted">$34</s></span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

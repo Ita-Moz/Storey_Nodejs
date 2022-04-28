@@ -23,17 +23,6 @@ var upload = multer({
     }
 }).single("txtFile");
 
-var upload1 = multer({
-    storage: storage,
-    limits: {
-        fieldNameSize: 300,
-        fileSize: 10 * 1024 * 1024, // 10 Mb
-    },
-    fileFilter: function (req, file, cb) {
-        console.log(file);
-        cb(null, true)
-    }
-}).single("image-product");
 
 //Hiển thị tất cả các sản phẩm
 exports.show = async (req, res) => {
@@ -88,7 +77,7 @@ exports.add = (req, res) => {
 // Hàm xử lí tìm kiếm nhiều sản phẩm có bằng (NAME)
 exports.search = async (req, res) => {
     try {
-        let allSearch = await products.find({ name: req.params.name }).sort('soluong');
+        let allSearch = await products.find({ name: { $regex: req.params.name } }).sort('soluong');
         if (allSearch.length == 0) {
             res.send("Sản phẩm không tồn tại!!!");
         } else {
@@ -131,7 +120,7 @@ exports.deleted = async (req, res) => {
 
 // Hàm xử lí chỉnh sửa sản phẩm
 exports.update = async (req, res) => {
-    upload1(req, res, function (err) {
+    upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             console.log("Error when uploading.");
         } else if (err) {

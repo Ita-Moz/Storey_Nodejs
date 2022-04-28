@@ -223,9 +223,7 @@
 				</div>
 				<!-- add row search -->
 				<div style="color:white;" id="addRowSeach"></div>
-				<!-- modal	 -->
-
-				<!--  -->
+		
 				<% danhsach.forEach((element,index)=> { %>
 					<div class="products-row delete-row<%- element._id %> ">
 						<button class="cell-more-button">
@@ -244,7 +242,7 @@
 							</span>
 						</div>
 						<div class="product-cell category"><span class="cell-label">Category:</span>
-							<%- element.describe %>
+							<p id="txtmota"><%- element.describe %></p> 
 						</div>
 						<div class="product-cell status-cell">
 							<span class="cell-label">Status:</span>
@@ -254,7 +252,7 @@
 							<%- element.soluong %>
 						</div>
 						<div class="product-cell price"><span class="cell-label">Price:</span>
-							<%- element.price %>
+							$<%- element.price %>
 						</div>
 						<div class="product-cell sales d-flex justify-content-around"><span
 								class="cell-label ">Sales:</span>

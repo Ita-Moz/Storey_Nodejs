@@ -47,6 +47,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#txtmota {
+  width: 100px;
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .app-container {
   border-radius: 4px;
   width: 100%;
