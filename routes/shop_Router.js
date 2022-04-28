@@ -22,6 +22,7 @@ router.get('/doi-mat-khau', (req, res) => {
 router.get('/gio-hang', (req, res) => {
     res.render('shop_gio_hang')
 })
+router.get('/search/:id',controller.search_display)
 router.get('/chi-tiet-san-pham/:id', controller.detail_product)
 router.get('/dong-ho-nam', controller.render_product)
 router.get('/dong-ho-nu', (req, res) => {
